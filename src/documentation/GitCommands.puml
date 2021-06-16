@@ -1,0 +1,29 @@
+@startuml
+map config {
+ git config --global USER.NAME "Jonas Hellgren" => sets name
+ git config --global USER.EMAIL "Jonas Hellgren" => sets email
+ git config list => shows config settings
+}
+
+
+map help {
+ git help config  => shows help about config
+}
+
+map init {
+ git init  => creates local repo
+ }
+
+map status {
+ git status  => shows status
+}
+
+map reset {
+ git reset FILE  => removes FILE (with path)) from staging area
+ git reset   => removes all files from staging area
+}
+
+config --[hidden]> help
+
+
+@enduml
