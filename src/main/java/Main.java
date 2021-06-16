@@ -5,11 +5,13 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        String joe = String.format("%s = %d", "Jonas", 35);
-        String jim = String.format("%s = %d", "Katja", 33);
+        String jo = String.format("%s = %d", "Jonas", 47);
+        String kat = String.format("%s = %d", "Katja", 48);
+        String alex = String.format("%s = %d", "Alex", 2);
         StringJoiner output = new StringJoiner(",", "[", "]");
-        output.add(joe);
-        output.add(jim);
+        output.add(jo);
+        output.add(kat);
+        output.add(alex);
         System.out.println(output.toString());   //-> [joe = 35,jim = 33]
     }
 
