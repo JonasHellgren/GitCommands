@@ -14,6 +14,12 @@ map BasicCommands {
  git diff  => lists file changes
 }
 
+map AddAndCommit {
+ git add <files>  => add files to staging area
+ git commit -m <message>  => create commit from files in staging area (updates repo)
+ git commit --amend -m <message>  => update latest commit
+}
+
 map PushingChanges {
  git remote add origin <url>>  => defines origin alias
  git pull <repoalias> <branch>  => updates local repo from remote repo/branch
@@ -22,7 +28,7 @@ map PushingChanges {
 
 map Branches {
  git branch => lists local branches
-  git branch -a  => lists all branches, also on remote repos
+ git branch -a  => lists all branches, also on remote repos
  git branch <name>  => creates branch <name>
  git checkout <name>  => sets branch <name> as actual, head points to this one
  git push <repoalias> <branch>  => updates remote repo according to local repo/branch
@@ -32,7 +38,11 @@ map Branches {
 
 map UndoMistakes {
  git checkout <filename>  => restores file
-
+ git cherrypick <hashofcommit>  => copies <hashofcommit> commit to present branch, handy if commited to wrong branch
+ git reset --hard <hashofoldcommit>  => "walk back in time", warning files updated
+ git clean -df  => remove all untracked files
+ git reflog => can be used to restore commits "deleted" by git reset, max up to 30 days
+ git revert  => creates new commits to revert changes of earlier commits
 }
 
 BasicCommands --[hidden]> PushingChanges
