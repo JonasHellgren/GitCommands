@@ -12,9 +12,23 @@ map BasicCommands {
  git clone <url> <where to clone>  => cloning remote repo, <where to clone> can be . (here)
  git remote -v  => info about remote repo, for ex after cloning it
  git branch -a  => lists all branches, also on remote repos
+ git diff  => lists file changes
 }
 
-BasicCommands --[hidden]> BasicCommands
+map PushingChanges {
+ git remote add origin <url>>  => defines origin alias
+ git pull <repoalias> <branch>  => updates local repo from remote repo/branch
+ git push <repoalias> <branch>  => updates remote repo from local repo/branch
+}
+
+map Branches {
+git branch => lists local branches
+ git branch <name>  => creates branch <name>
+ git checkout <name>  => sets branch <name> as actual, head points to this one
+ git push <repoalias> <branch>  => updates remote repo from local repo/branch
+}
+
+BasicCommands --[hidden]> PushingChanges
 
 
 @enduml
