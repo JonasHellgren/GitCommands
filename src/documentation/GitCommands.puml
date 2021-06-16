@@ -8,10 +8,9 @@ map BasicCommands {
  git status  => shows status
  git reset FILE  => removes FILE (with path)) from staging area
  git reset   => removes all files from staging area
- git log   => commit history
+ git log   => list commit history
  git clone <url> <where to clone>  => cloning remote repo, <where to clone> can be . (here)
  git remote -v  => info about remote repo, for ex after cloning it
- git branch -a  => lists all branches, also on remote repos
  git diff  => lists file changes
 }
 
@@ -22,13 +21,21 @@ map PushingChanges {
 }
 
 map Branches {
-git branch => lists local branches
+ git branch => lists local branches
+  git branch -a  => lists all branches, also on remote repos
  git branch <name>  => creates branch <name>
  git checkout <name>  => sets branch <name> as actual, head points to this one
- git push <repoalias> <branch>  => updates remote repo from local repo/branch
+ git push <repoalias> <branch>  => updates remote repo according to local repo/branch
+ git branch -d <name> => delete local branch <name>
+ git push origin --delete <name> => delete branch <name> on remote repo origin
+}
+
+map UndoMistakes {
+ git checkout <filename>  => restores file
+
 }
 
 BasicCommands --[hidden]> PushingChanges
-
+PushingChanges --[hidden]> Branches
 
 @enduml
