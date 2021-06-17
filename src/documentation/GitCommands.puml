@@ -45,9 +45,18 @@ map UndoMistakes {
  git revert <hashofcommit> => creates new commits to revert changes of earlier commits
 }
 
+map Stash {
+ General description => Creates "commits" independent of branch. Handy when e.g. want to switch between branches without commiting
+ git stash save "<message>" =>  saves working files in stash que
+ git stash list => lists stashes
+ git stash apply <iteminstashlist>  => update working files according specific stash
+ git stash pop   => update according latest stash, that item disappears from stash list
+}
+
 BasicCommands --[hidden]> AddAndCommit
 AddAndCommit --[hidden]> PushingChanges
 PushingChanges --[hidden]> Branches
-UndoMistakes --[hidden]> UndoMistakes
+Branches --[hidden]> Stash
+Stash --[hidden]> Stash
 
 @enduml
