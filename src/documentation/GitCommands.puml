@@ -53,10 +53,20 @@ map Stash {
  git stash pop   => update according latest stash, that item disappears from stash list
 }
 
+map GitAddVariants {
+ General description => Git add can be done in different ways
+ git add -A => adds all changes: modified, new and deleted files. Also files above current directory.
+ git add -A <folder> => ....in specific folder
+ git add  => same as git add -A
+ git add -u  => adds only modified and deleted, but not new files.
+ git add . => add changes in current folder but not above.
+
+}
+
 BasicCommands --[hidden]> AddAndCommit
 AddAndCommit --[hidden]> PushingChanges
 PushingChanges --[hidden]> Branches
 Branches --[hidden]> Stash
-Stash --[hidden]> Stash
+Stash --[hidden]> GitAddVariants
 
 @enduml
