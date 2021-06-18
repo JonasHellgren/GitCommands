@@ -60,7 +60,18 @@ map GitAddVariants {
  git add  => same as git add -A
  git add -u  => adds only modified and deleted, but not new files.
  git add . => add changes in current folder but not above.
+}
 
+map Alias {
+ alias loggraph="git log --all --decorate --oneline --graph"  => defines loggraph
+}
+
+map Branching {
+ fast forward branch => result of merging branches on top of each other
+ 3 way branch => result of merging branches NOT on top of each other
+ git  branch --merged => shows merged/identical branches
+ git  merge <name> => merges branch <name> into current branch
+ git  merge -d <name>  => deletes branch
 }
 
 BasicCommands --[hidden]> AddAndCommit
@@ -68,5 +79,7 @@ AddAndCommit --[hidden]> PushingChanges
 PushingChanges --[hidden]> Branches
 Branches --[hidden]> Stash
 Stash --[hidden]> GitAddVariants
+GitAddVariants --[hidden]> Branching
+Branching --[hidden]> Branching
 
 @enduml
