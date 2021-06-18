@@ -71,7 +71,7 @@ map Branching {
  3 way branch => result of merging branches NOT on top of each other
  git  branch --merged => shows merged/identical branches
  git  merge <name> => merges branch <name> into current branch
- git  merge -d <name>  => deletes branch
+ git  branch -d <name>  => deletes branch
 }
 
 BasicCommands --[hidden]> AddAndCommit
