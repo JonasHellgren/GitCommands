@@ -6,4 +6,8 @@ public class Dummy {
     public Dummy(int number) {
         this.number = number;
     }
+
+    public Dummy(String name) {
+        this.name = name;
+    }
 }
