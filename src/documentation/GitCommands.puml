@@ -93,11 +93,8 @@ git switch <branch-name> => identical to git checkout except flag for creating n
 git rebase <master> =>
 }
 
-<<<<<<< HEAD
-=======
 map Squash {
 }
->>>>>>> Dummy
 
 Config --[hidden]> InfoShow
 InfoShow --[hidden]> AddAndCommit
