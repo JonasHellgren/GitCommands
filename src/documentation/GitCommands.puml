@@ -80,7 +80,7 @@ git reset --hard HEAD^  =>  use parent of present commit as new present commit, 
 
 map Merging {
  fast forward branch => result of merging branches on top of each other
- merge commit => result of merging branches, each with many commits
+ merge commit => result of merging branches, each with multiple commits, one new commit created
  git  branch --merged => shows merged/identical branches
  git  merge <name> => merges branch <name> into current branch
  git  branch -d <name>  => deletes branch
@@ -93,6 +93,11 @@ git switch <branch-name> => identical to git checkout except flag for creating n
 git rebase <master> =>
 }
 
+<<<<<<< HEAD
+=======
+map Squash {
+}
+>>>>>>> Dummy
 
 Config --[hidden]> InfoShow
 InfoShow --[hidden]> AddAndCommit
