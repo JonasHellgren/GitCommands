@@ -68,9 +68,6 @@ map GitAddVariants {
  git add . => add changes in current folder but not above.
 }
 
-
-
-
 map MoveCommitFromOneBranchToAnother {
 background =>  commit HASH on wrong branch, want to move it to BRANCH
 git checkout BRANCH
@@ -78,6 +75,7 @@ git cherry-pick HASH   =>  copies HASH to BRANCH
 git reset --hard HEAD^  =>  use parent of present commit as new present commit, HEAD in the ether
 }
 
+'https://www.youtube.com/watch?v=7Mh259hfxJg&t=739s
 map Merging {
  fast forward branch => result of merging branches on top of each other
  merge commit => result of merging branches, each with multiple commits, one new commit created
@@ -86,11 +84,12 @@ map Merging {
  git  branch -d <name>  => deletes branch
 }
 
+'https://www.youtube.com/watch?v=7Mh259hfxJg&t=739s
 map Rebase {
 definition => moves feature branch so begins at the tip of the master branch. Rewrites history. Creates new commits for all original feature branch commits.
 rules =>  don't change history when other peoples using same branch, never change history on master, only change history for commits not yet been paused
 git switch <branch-name> => identical to git checkout except flag for creating new branch is -c for switch and -b for checkout
-git rebase <master> =>
+git rebase master =>
 }
 
 map Squash {
