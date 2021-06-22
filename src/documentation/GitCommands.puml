@@ -77,11 +77,13 @@ git reset --hard HEAD^  =>  use parent of present commit as new present commit, 
 
 'https://www.youtube.com/watch?v=7Mh259hfxJg&t=739s
 map Merging {
- fast forward branch => result of merging branches on top of each other
+ fast forward merge => result of merging branches on top of each other
  merge commit => result of merging branches, each with multiple commits, one new commit created
  git  branch --merged => shows merged/identical branches
  git  merge <name> => merges branch <name> into current branch
  git  branch -d <name>  => deletes branch
+ git checkout master;  git  merge <name> =>  fast forward merge, put <name> into master
+
 }
 
 'https://www.youtube.com/watch?v=7Mh259hfxJg&t=739s
@@ -93,6 +95,10 @@ git rebase master =>
 }
 
 map Squash {
+definition => Squash is about fusing multiple commits
+git rebase -i HEAD~4  => fuses 4 commits back
+git rebase -i <commit-hash>  => fuses until <commit-hash>, opens text editor where {pick,squash} determines commit fusing
+git merge --squash <branch-name>  => Take all changes from <branch-name> and applies to current branch, needs commmit to take affect
 }
 
 Config --[hidden]> InfoShow
