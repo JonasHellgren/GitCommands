@@ -1,17 +1,20 @@
 @startuml
-map BasicCommands {
+map Config {
  git config --global USER.NAME "Jonas Hellgren" => sets name
  git config --global USER.EMAIL "Jonas Hellgren" => sets email
  git config list => shows config settings
  git help config  => shows help about config
  git init  => creates local repo
+ }
+
+ map InfoShow {
  git status  => shows status
  git reset FILE  => removes FILE (with path)) from staging area
  git reset   => removes all files from staging area
  git log   => list commit history
- git clone <url> <where to clone>  => cloning remote repo, <where to clone> can be . (here)
- git remote -v  => info about remote repo, for ex after cloning it
+ git show <hash> => display the changes for single commit
  git diff  => lists file changes
+ alias loggraph="git log --all --decorate --oneline --graph"  => defines loggraph
 }
 
 map AddAndCommit {
@@ -20,7 +23,9 @@ map AddAndCommit {
  git commit --amend -m <message>  => update latest commit
 }
 
-map PushingChanges {
+map RemoteInteraction {
+ git clone <url> <where to clone>  => cloning remote repo, <where to clone> can be . (here)
+ git remote -v  => info about remote repo, for ex after cloning it
  git remote add origin <url>>  => defines origin alias
  git pull <repoalias> <branch>  => updates local repo from remote repo/branch
  git push <repoalias> <branch>  => updates remote repo from local repo/branch
@@ -59,27 +64,47 @@ map GitAddVariants {
  git add -A <folder> => ....in specific folder
  git add  => same as git add -A
  git add -u  => adds only modified and deleted, but not new files.
+ git add -p => Make more specific commits. Will go through all new changes in your code and let you to decide what you would like to stage or not stage.
  git add . => add changes in current folder but not above.
 }
 
-map Alias {
- alias loggraph="git log --all --decorate --oneline --graph"  => defines loggraph
+
+
+
+map MoveCommitFromOneBranchToAnother {
+background =>  commit HASH on wrong branch, want to move it to BRANCH
+git checkout BRANCH
+git cherry-pick HASH   =>  copies HASH to BRANCH
+git reset --hard HEAD^  =>  use parent of present commit as new present commit, HEAD in the ether
 }
 
-map Branching {
+map Merging {
  fast forward branch => result of merging branches on top of each other
- 3 way branch => result of merging branches NOT on top of each other
+ merge commit => result of merging branches, each with multiple commits, one new commit created
  git  branch --merged => shows merged/identical branches
  git  merge <name> => merges branch <name> into current branch
  git  branch -d <name>  => deletes branch
 }
 
-BasicCommands --[hidden]> AddAndCommit
-AddAndCommit --[hidden]> PushingChanges
-PushingChanges --[hidden]> Branches
-Branches --[hidden]> Stash
+map Rebase {
+definition => moves feature branch so begins at the tip of the master branch. Rewrites history. Creates new commits for all original feature branch commits.
+rules =>  don't change history when other peoples using same branch, never change history on master, only change history for commits not yet been paused
+git switch <branch-name> => identical to git checkout except flag for creating new branch is -c for switch and -b for checkout
+git rebase <master> =>
+}
+
+map Squash {
+}
+
+Config --[hidden]> InfoShow
+InfoShow --[hidden]> AddAndCommit
+AddAndCommit --[hidden]> RemoteInteraction
+RemoteInteraction --[hidden]> Branches
+Branches --[hidden]> UndoMistakes
+UndoMistakes --[hidden]> Stash
 Stash --[hidden]> GitAddVariants
-GitAddVariants --[hidden]> Branching
-Branching --[hidden]> Branching
+GitAddVariants --[hidden]> MoveCommitFromOneBranchToAnother
+MoveCommitFromOneBranchToAnother --[hidden]> Merging
+Merging --[hidden]> Rebase
 
 @enduml
