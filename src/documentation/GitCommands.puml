@@ -97,7 +97,8 @@ git rebase master =>
 map Squash {
 definition => Squash is about fusing multiple commits
 git rebase -i HEAD~4  => fuses 4 commits back
-git rebase -i <commit-hash>  => fuses until <commit-hash>, opens text editor where {pick,squash} determines commit fusing
+git rebase -i :<commit-hash>  => fuses until <commit-hash>, opens text editor where {pick,squash} determines commit fusing
+'https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor
 git merge --squash <branch-name>  => Take all changes from <branch-name> and applies to current branch, needs commmit to take affect
 }
 
