@@ -112,5 +112,6 @@ Stash --[hidden]> GitAddVariants
 GitAddVariants --[hidden]> MoveCommitFromOneBranchToAnother
 MoveCommitFromOneBranchToAnother --[hidden]> Merging
 Merging --[hidden]> Rebase
+Rebase --[hidden]> Squash
 
 @enduml
