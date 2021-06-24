@@ -1,4 +1,4 @@
 public class C {
-    int a;
+    int a=0;
     int b;
 }
