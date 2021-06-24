@@ -44,10 +44,11 @@ map Branches {
 map UndoMistakes {
  git checkout <filename>  => restores file
  git cherrypick <hashofcommit>  => copies <hashofcommit> commit to present branch, handy if commited to wrong branch
- git reset --hard <hashofoldcommit>  => "walk back in time", warning files updated
+ git reset --soft <hashofoldcommit>  => as hard but keeps local changes
+ git reset --hard <hashofoldcommit>  => "walk back in time", warning files updated, careful <=> removes local changes
  git clean -df  => remove all untracked files
  git reflog => can be used to restore commits "deleted" by git reset, max up to 30 days
- git revert <hashofcommit> => creates new commits to revert changes of earlier commits
+ git revert <hashofcommit> => creates new commits to revert changes of earlier commits, undo earlier commits
 }
 
 map Stash {
