@@ -1,7 +1,7 @@
 @startuml
 map Config {
  git config --global USER.NAME "Jonas Hellgren" => sets name
- git config --global USER.EMAIL "Jonas Hellgren" => sets email
+ git config --global USER.EMAIL "jonas.hellgren@volvo.com" => sets email
  git config list => shows config settings
  git help config  => shows help about config
  git init  => creates local repo
@@ -13,7 +13,7 @@ map Config {
  git reset   => removes all files from staging area
  git log   => list commit history
  git show <hash> => display the changes for single commit
- git diff  => lists file changes
+ git diff  => lists file changes, unstages files (before add)
  alias loggraph="git log --all --decorate --oneline --graph"  => defines loggraph
 }
 
@@ -94,11 +94,13 @@ git switch <branch-name> => identical to git checkout except flag for creating n
 git rebase master =>
 }
 
+'https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor
+'https://www.youtube.com/watch?v=RwvTrSm7zEY&t=611s
 map Squash {
-definition => Squash is about fusing multiple commits
+definition => Squash is about fusing multiple commits into one
 git rebase -i HEAD~4  => fuses 4 commits back
 git rebase -i :<commit-hash>  => fuses until <commit-hash>, opens text editor where {pick,squash} determines commit fusing
-'https://stackoverflow.com/questions/11828270/how-do-i-exit-the-vim-editor
+
 git merge --squash <branch-name>  => Take all changes from <branch-name> and applies to current branch, needs commmit to take affect
 }
 
