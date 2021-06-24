@@ -1,5 +1,5 @@
 public class C {
-    int a=0;
+    int a=10;
     int b;
     int c=0;
 }
